@@ -178,8 +178,10 @@ public class ComputerController : MonoBehaviour
 	bool adsWatched;
 	public void GetRewardValue()
 	{
+		/*
 		Advertisements.Instance.ShowRewardedVideo(CompleteMethod);
 		Debug.Log("ADS WATCHED");
+		*/
 		float valueFromFloat = YelbBackend.GetValueFromFloat(YelbRef.CashValue);
 		float num = 200f;
 		PlayerPrefs.SetFloat(YelbRef.CashValue, valueFromFloat + num);

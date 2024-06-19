@@ -11,7 +11,7 @@
         private static ScreenWriter instance;
 
         public static void Write(object message)
-        {
+        { /*
             if (Advertisements.Instance.debug == true)
             {
                 if (instance == null)
@@ -23,10 +23,12 @@
                 }
                 logMessage += "\n" + message.ToString();
             }
+            */
         }
 
         void OnGUI()
         {
+            /*
             if (Advertisements.Instance.debug == true)
             {
                 if (logMessage != null)
@@ -38,6 +40,7 @@
                     }
                 }
             }
+            */
         }
     }
 }

@@ -71,7 +71,8 @@ public class YelbCharacter : MonoBehaviour
 		CashData = UnityEngine.Object.FindObjectOfType<CashRegister>(includeInactive: true);
 		BOOL = base.gameObject.AddComponent<BooleanManager>();
 		STINGCONTROLLER = base.gameObject.AddComponent<StringsManager>();
-        if (!PlayerPrefs.HasKey("openAds"))
+      /*
+		if (!PlayerPrefs.HasKey("openAds"))
         {
 			PlayerPrefs.SetInt("openAds", 1);
         }
@@ -79,6 +80,7 @@ public class YelbCharacter : MonoBehaviour
         {
 			Advertisements.Instance.ShowInterstitial();
 		}
+	  */
 	}
 
 	private void Update()
@@ -93,11 +95,13 @@ public class YelbCharacter : MonoBehaviour
         {
 			yield return new WaitForSeconds(1);
 			timer++;
+			/*
 			if(timer > interAdsTreshold)
             {
 				timer = 0;
 				Advertisements.Instance.ShowInterstitial();
 			}
+			*/
 			yield return null;
         }
     }
@@ -665,10 +669,15 @@ public class YelbCharacter : MonoBehaviour
 				{
 					Debug.Log("Leave");
 					leaveTimes++;
+
+					/*
 					if(leaveTimes >= timesStampsToWatchAds)
                     {
 						Advertisements.Instance.ShowInterstitial();
 					}
+					*/
+
+
 					_003COnTriggerEnter_003Eg__TakeAction_007C32_1();
 				});
 				CameraTransform.transform.rotation = Quaternion.Euler(7.937f, -60.583f, 0f);

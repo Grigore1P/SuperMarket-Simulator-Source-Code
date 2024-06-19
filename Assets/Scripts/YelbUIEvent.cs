@@ -5,7 +5,8 @@ public class YelbUIEvent : MonoBehaviour
 {
 	private void Start()
 	{
-	}
+
+	}	
 
 	private void Update()
 	{
