@@ -69,7 +69,7 @@ public class YelbController : MonoBehaviour
 	{
 		if (YelbBackend.GetValueFromString("YelbLauncher") == "")
 		{
-			YelbBackend.SaveData(YelbRef.CashValue, "150", DataType.floatV);
+			YelbBackend.SaveData(YelbRef.CashValue, "1500", DataType.floatV);
 			YelbBackend.SaveData(YelbRef.StoreLevel, "1", DataType.floatV);
 			LevelValueFill.fillAmount = 0f;
 		}
