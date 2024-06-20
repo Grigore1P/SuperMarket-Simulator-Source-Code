@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1019489264389014442}
   - component: {fileID: 8322355976455092636}
   - component: {fileID: 2324556430733968741}
-  - component: {fileID: 5431130985538447538}
   m_Layer: 0
   m_Name: Juice 2
   m_TagString: Untagged
@@ -84,24 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5431130985538447538
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4070882210506191289}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.07727296, y: 0.23997018, z: 0.07609902}
-  m_Center: {x: 0, y: 0.11998546, z: -0.0000000018626451}
