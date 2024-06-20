@@ -346,7 +346,6 @@ GameObject:
   - component: {fileID: 397742557872394154}
   - component: {fileID: 5077864396717728045}
   - component: {fileID: 8276299468727280682}
-  - component: {fileID: 7446610469072307914}
   m_Layer: 0
   m_Name: freezer
   m_TagString: Untagged
@@ -419,25 +418,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7446610469072307914
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5523959590849537197}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 286ecdd7995398740b3feb921bfbebbb, type: 3}

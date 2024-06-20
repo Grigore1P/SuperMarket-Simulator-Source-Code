@@ -259,8 +259,10 @@ public class YelbCharacter : MonoBehaviour
 									BoxHolding.Items[0].localScale = new Vector3(1, 1, 1);
 									ShelfTrigger.UpdateShelfData();
 									BoxHolding.Items.RemoveAt(0);
+
 								}
-								/*
+								
+                                /*
 								 * Steps : 
 								 *  1 - Select Items that box has
 								 *  2 - Select Where to put the item
@@ -268,7 +270,7 @@ public class YelbCharacter : MonoBehaviour
 								 *  4 - Remove first item from the box.items
 								 *  & - Debug Actions
 								 */
-							});
+                            });
 
 							_YelbController.LinkerController.FillShelfBtn.gameObject.SetActive(value: true);
 						}
