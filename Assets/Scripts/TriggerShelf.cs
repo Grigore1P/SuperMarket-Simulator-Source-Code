@@ -28,7 +28,7 @@ public class TriggerShelf : MonoBehaviour
 	public Text[] Prices;
 
 	[Header("Integer Controller")]
-	internal int TotalItems;
+	public int TotalItems;
 
 	private void Awake()
 	{

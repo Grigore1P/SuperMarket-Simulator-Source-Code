@@ -58,8 +58,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9218001, y: 0.15, z: 0.4039375}
-  m_Center: {x: 0.01425656, y: 1.520637, z: -0.27}
+  m_Size: {x: 0.92180014, y: 0.14999999, z: 0.3353012}
+  m_Center: {x: 0.014256558, y: 1.5206369, z: -0.23568177}
 --- !u!114 &3552942918862001606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +86,7 @@ MonoBehaviour:
   Prices:
   - {fileID: 1570188031758656865}
   - {fileID: 3049995464203822153}
+  TotalItems: 0
 --- !u!1 &80827269704172789
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,8 +380,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9218001, y: 0.15, z: 0.4039375}
-  m_Center: {x: 0.01425656, y: 1.520637, z: -0.27}
+  m_Size: {x: 0.92180014, y: 0.14999999, z: 0.348682}
+  m_Center: {x: 0.014256558, y: 1.5206369, z: -0.24237227}
 --- !u!114 &613013261263304221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +408,7 @@ MonoBehaviour:
   Prices:
   - {fileID: 8492267505508690040}
   - {fileID: 337448163271456475}
+  TotalItems: 0
 --- !u!1 &239634091617556849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,8 +1304,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9749831, y: 2.052899, z: 0.5254602}
-  m_Center: {x: -0.0000001716252, y: 1.02645, z: -0.2}
+  m_Size: {x: 0.97498304, y: 2.0528986, z: 0.44792005}
+  m_Center: {x: -0.00000017162516, y: 1.0264499, z: -0.16123}
 --- !u!114 &1791407411162945065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5232,8 +5234,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9218001, y: 0.15, z: 0.4039375}
-  m_Center: {x: 0.01425656, y: 1.520637, z: -0.27}
+  m_Size: {x: 0.92180014, y: 0.14999999, z: 0.3409762}
+  m_Center: {x: 0.014256558, y: 1.5206369, z: -0.23851928}
 --- !u!114 &6269996617352697268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5260,6 +5262,7 @@ MonoBehaviour:
   Prices:
   - {fileID: 908319014752224864}
   - {fileID: 6759518106399185656}
+  TotalItems: 0
 --- !u!1 &6300389890688633978
 GameObject:
   m_ObjectHideFlags: 0
@@ -6267,8 +6270,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9218001, y: 0.15, z: 0.4039375}
-  m_Center: {x: 0.01425656, y: 1.520637, z: -0.27}
+  m_Size: {x: 0.92180014, y: 0.14999999, z: 0.33495268}
+  m_Center: {x: 0.014256558, y: 1.5206369, z: -0.2355074}
 --- !u!114 &7697514164498251445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6295,6 +6298,7 @@ MonoBehaviour:
   Prices:
   - {fileID: 7304013452349467432}
   - {fileID: 4109220171996514894}
+  TotalItems: 0
 --- !u!1 &7359668792275917052
 GameObject:
   m_ObjectHideFlags: 0
