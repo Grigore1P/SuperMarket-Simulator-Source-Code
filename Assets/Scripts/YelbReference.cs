@@ -64,6 +64,7 @@ public class YelbReference : MonoBehaviour
 		if (flag)
 		{
 			base.gameObject.GetComponent<NavMeshObstacle>().size = GetComponentInChildren<BoxCollider>().size;
+			base.gameObject.GetComponent<NavMeshObstacle>().center = GetComponentInChildren<BoxCollider>().center;
 			base.gameObject.GetComponent<NavMeshObstacle>().carving = true;
 		}
 	}
