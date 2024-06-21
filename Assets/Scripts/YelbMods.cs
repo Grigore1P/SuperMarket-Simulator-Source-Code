@@ -25,6 +25,7 @@ public class YelbMods : MonoBehaviour
 
 	public void SetHigh(GameObject Model, bool Up)
 	{
+		return;
 		if (!modsHighDone.Contains(Model))
 		{
 			modsHighDone.Add(Model);
