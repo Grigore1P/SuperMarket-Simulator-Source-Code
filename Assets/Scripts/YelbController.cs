@@ -188,9 +188,9 @@ public class YelbController : MonoBehaviour
 		if (valueFromFloat >= 1f)
 		{
 			GameObject.Find("WinsoundNextLevel").GetComponent<AudioSource>().Play();
-			PlayerPrefs.SetFloat(YelbRef.StoreLevel, YelbBackend.GetValueFromFloat(YelbRef.StoreLevel) + 1f);
+			SaveBridge.SetFloatPP(YelbRef.StoreLevel, YelbBackend.GetValueFromFloat(YelbRef.StoreLevel) + 1f);
 			StoreLevel.text = "STORE LEVEL " + YelbBackend.GetValueFromFloat(YelbRef.StoreLevel).ToString();
-			PlayerPrefs.SetFloat(YelbRef.LevelPickedValue, 0f);
+            SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, 0f);
 		}
 		else
 		{

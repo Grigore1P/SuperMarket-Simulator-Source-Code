@@ -1,4 +1,5 @@
 // DecompilerFi decompiler from Assembly-CSharp.dll class: Yelbouziani.YelbBackend
+using Rewired;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -135,9 +136,12 @@ namespace Yelbouziani
 			switch (ModeInput)
 			{
 			case ModeSelection.movement:
-				return new Vector3(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"), SimpleInput.GetAxis("Depth"));
+				//return new Vector3(SimpleInput.GetAxis("Horizontal"), SimpleInput.GetAxis("Vertical"), SimpleInput.GetAxis("Depth"));
+				return new Vector3(Rewired.ReInput.players.GetPlayer(0).GetAxis(GameKeys.N_LeftStickX), Rewired.ReInput.players.GetPlayer(0).GetAxis(GameKeys.N_LeftStickY), SimpleInput.GetAxis("Depth"));
 			case ModeSelection.rotation:
-				return new Vector3(SimpleInput.GetAxis("RotationX"), SimpleInput.GetAxis("RotationY"), SimpleInput.GetAxis("Depth"));
+				return new Vector3(Rewired.ReInput.players.GetPlayer(0).GetAxis(GameKeys.N_RightStickX), Rewired.ReInput.players.GetPlayer(0).GetAxis(GameKeys.N_RightStickY), SimpleInput.GetAxis("Depth"));
+			//	return new Vector3(SimpleInput.GetAxis("RotationX"), SimpleInput.GetAxis("RotationY"), SimpleInput.GetAxis("Depth"));
+
 			default:
 				return Vector3.zero;
 			}
@@ -325,7 +329,7 @@ namespace Yelbouziani
 
 		public static int GetValueFromInt(string ID)
 		{
-			return PlayerPrefs.GetInt(ID);
+			return SaveBridge.GetIntPP(ID);
 		}
 
 		public static int ExtractNumberFromString(string input)
@@ -349,7 +353,7 @@ namespace Yelbouziani
 
 		public static string GetValueFromString(string ID)
 		{
-			return PlayerPrefs.GetString(ID);
+			return SaveBridge.GetStringPP(ID);
 		}
 
 		public static string FormatNumber(int number)
@@ -407,7 +411,7 @@ namespace Yelbouziani
 
 		public static float GetValueFromFloat(string ID)
 		{
-			return PlayerPrefs.GetFloat(ID);
+			return SaveBridge.GetFloatPP(ID,0);
 		}
 
 		public static float GetVolume(VolumeMode Mode)
@@ -415,11 +419,11 @@ namespace Yelbouziani
 			switch (Mode)
 			{
 			case VolumeMode.sound:
-				return PlayerPrefs.GetFloat("YelbSound");
+				return SaveBridge.GetFloatPP("YelbSound",0);
 			case VolumeMode.music:
-				return PlayerPrefs.GetFloat("YelbMusic");
+				return SaveBridge.GetFloatPP("YelbMusic",0);
 			case VolumeMode.effect:
-				return PlayerPrefs.GetFloat("YelbEffect");
+				return SaveBridge.GetFloatPP("YelbEffect",0);
 			default:
 				return 0f;
 			}
@@ -636,13 +640,13 @@ namespace Yelbouziani
 			switch (Mode)
 			{
 			case DataType.stringV:
-				PlayerPrefs.SetString(ID, Information);
+                    SaveBridge.SetStringPP(ID, Information);
 				break;
 			case DataType.floatV:
-				PlayerPrefs.SetFloat(ID, float.Parse(Information));
+				SaveBridge.SetFloatPP(ID, float.Parse(Information));
 				break;
 			case DataType.IntV:
-				PlayerPrefs.SetInt(ID, int.Parse(Information));
+				SaveBridge.SetIntPP(ID, int.Parse(Information));
 				break;
 			}
 		}
@@ -652,13 +656,13 @@ namespace Yelbouziani
 			switch (Mode)
 			{
 			case VolumeMode.sound:
-				PlayerPrefs.SetFloat("YelbSound", Value);
+				SaveBridge.SetFloatPP("YelbSound", Value);
 				break;
 			case VolumeMode.music:
-				PlayerPrefs.SetFloat("YelbMusic", Value);
+				SaveBridge.SetFloatPP("YelbMusic", Value);
 				break;
 			case VolumeMode.effect:
-				PlayerPrefs.SetFloat("YelbEffect", Value);
+				SaveBridge.SetFloatPP("YelbEffect", Value);
 				break;
 			}
 		}

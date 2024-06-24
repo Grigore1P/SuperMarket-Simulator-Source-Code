@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Yelbouziani;
 using Yelbouziani.Enum;
@@ -122,13 +123,13 @@ public class YelbCharacter : MonoBehaviour
 	{
 		if (BOOL.IsLocked)
 		{
-			SenstiveCamX = 6f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
-			SenstiveCamY = 6f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
+			SenstiveCamX = 4f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
+			SenstiveCamY = 4f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
 		}
 		else
 		{
-			SenstiveCamX = 12f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookX);
-			SenstiveCamY = 12f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookY);
+			SenstiveCamX = 5f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookX);
+			SenstiveCamY = 5f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookY);
 		}
 	}
 
@@ -728,6 +729,8 @@ public class YelbCharacter : MonoBehaviour
 		ArrowGlow.gameObject.SetActive(value: true);
 		CheckValue.onClick.RemoveAllListeners();
 		//_003C_003Ec__DisplayClass28_0 CS_0024_003C_003E8__locals0;
+
+		EventSystem.current.SetSelectedGameObject(FieldInformation.gameObject);
 		FieldInformation.onValueChanged.AddListener(delegate
 		{
 			Debug.Log("value changed");//CS_0024_003C_003E8__locals0._003CManagerLogic_003Eg__EventClickInputField_007C5
@@ -746,7 +749,12 @@ public class YelbCharacter : MonoBehaviour
 			Debug.Log("Price is : " + price);
 			if (FieldInformation.text != price)
             {
-				Debug.Log("wrong value !");
+                //Debug.Log("wrong value !");
+                List<string> information = new List<string>
+                    {
+                      "Wrong Value!"
+                    };
+                _YelbController.SpawnNotification(information, null);
             }
             else
             {
@@ -759,15 +767,17 @@ public class YelbCharacter : MonoBehaviour
 				_YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: true);
 				BOOL.IsMoveCameraForPay = false;
 				FieldInformation.text = "";
-				PlayerPrefs.SetFloat("CashValue" , PlayerPrefs.GetFloat("CashValue") + float.Parse(price));
-			}
-			/*
+				SaveBridge.SetFloatPP("CashValue" , SaveBridge.GetFloatPP("CashValue" ,150) + float.Parse(price));
+                EventSystem.current.SetSelectedGameObject(null);
+
+            }
+            /*
 			 * Check product and value of the introduced value
 			 *  |-- if true  : pass client 
 			 *    |-- 
 			 *  |-- if false : debug error
 			 */
-		});
+        });
 		Debug.Log("Call Btn");
 		PositionCamera = CameraTransform.localPosition;
 		RotationCamera = CameraTransform.localEulerAngles;
