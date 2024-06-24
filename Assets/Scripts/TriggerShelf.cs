@@ -147,22 +147,33 @@ public class TriggerShelf : MonoBehaviour
 				transform.transform.GetChild(0).GetComponent<ItemInfo>().Priceitem = float.Parse(Prices[0].text, System.Globalization.CultureInfo.InvariantCulture);
 			}
 		}
-		for (int j = 0; j < SlotsMenu.Length; j++)
+        int currentTotalItems = 0;
+        for (int j = 0; j < SlotsMenu.Length; j++)
 		{
+			
 			Transform transform2 = SlotsMenu[j].transform;
 			string text = "null";
 			if (transform2.childCount > 0)
 			{
-				TotalItems++;
-				ShelfData.TotalItems++;
-				Object.FindObjectOfType<YelbController>().TotalItems++;
+				currentTotalItems++;
+              
 				text = "active";
 			}
 			string iDIInformation = ShelfData.transform.GetComponent<YelbReference>().IDIInformation;
 			string information = transform2.name + "/" + IconNameItem + "/" + TypeShelf + "/" + text + "/" + Prices[0].text;
 			YelbBackend.SaveData(IDInformation(iDIInformation) + transform2.name + ShelfData.name, information, DataType.stringV);
 		}
-	}
+
+		int differenceToAdd = 0;
+		if(currentTotalItems > TotalItems)
+		{
+            differenceToAdd = currentTotalItems - TotalItems;
+
+        }
+        TotalItems+= differenceToAdd;
+        ShelfData.TotalItems+= differenceToAdd;
+        Object.FindObjectOfType<YelbController>().TotalItems += differenceToAdd;
+    }
 
 	public void SetActionToggle()
 	{
