@@ -30,18 +30,21 @@ public class YelbUI : MonoBehaviour
 	{
 		if (Mode)
 		{
-			PanelTutorial0.SetActive(value: true);
-			StartCoroutine(LoadingAction());
-		}
+			//PanelTutorial0.SetActive(value: true);
+			//StartCoroutine(LoadingAction());
+			LoadingAction();
+
+        }
 		else
 		{
 			PanelTutorial1.SetActive(value: true);
 		}
 	}
 
-	private IEnumerator LoadingAction()
+	private void LoadingAction()
 	{
-		yield return new WaitForSeconds(2f);
+		
+		//yield return new WaitForSeconds(2f);
 		PanelTutorial0.SetActive(value: false);
 		PanelTutorial1.SetActive(value: true);
 	}

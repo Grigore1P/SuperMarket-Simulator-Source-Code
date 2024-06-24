@@ -105,7 +105,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineDepthOffset: 0.01
+    - _OutlineDepthOffset: 0
     - _OutlineWidth: 1.5
     - _OverrideLightmapDir: 0
     - _Parallax: 0.02

@@ -6,7 +6,7 @@ public class PeopleController : MonoBehaviour
     [HideInInspector] public float timer;
     [HideInInspector] public string[] animNames;
     [HideInInspector] public float damping;
-    [HideInInspector] public Transform target;
+     public Transform target;
 
     void Start()
 	{
