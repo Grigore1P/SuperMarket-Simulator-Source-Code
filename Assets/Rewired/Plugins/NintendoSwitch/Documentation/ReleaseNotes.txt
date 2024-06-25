@@ -1,5 +1,14 @@
 Rewired Nintendo Switch Plugin
 
+v30:
+  - Removed support for Nintendo Switch Plugin running in the Unity Windows Editor due to intermittent reports of the Unity Editor crashing and Unity's inability to load new x64 DLLs built to SDK 12.3.1, 14.3.0, or 16.2.0.
+  - Added native library built to Nintendo SDK 12.3.1.
+  - Added native library built to Nintendo SDK 14.3.0.
+  - Added native library built to Nintendo SDK 16.2.0.
+
+v29:
+  - Added support for Nintendo Switch Plugin running in the Unity Editor. This feature requires Rewired 1.1.42.0+.
+
 v28:
   - Removed unused extern mouse functions due to compiler errors if code stripping level is set to Low or Medium.
 

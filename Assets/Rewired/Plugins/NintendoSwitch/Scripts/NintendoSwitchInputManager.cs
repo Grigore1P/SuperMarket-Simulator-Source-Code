@@ -143,9 +143,8 @@ namespace Rewired.Platforms.Switch {
         /// </summary>
         /// <returns>Input manager</returns>
         object IExternalInputManager.Initialize(Platform platform, object configVars) {
-#if UNITY_SWITCH
+#if UNITY_SWITCH && !UNITY_EDITOR
             if(platform != Platform.Switch) return null;
-            if(Application.isEditor) return null;
             if(configVars == null) return null;
             return Rewired.Utils.Platforms.Switch.Main.Initialize(this, _userData);
 #else
