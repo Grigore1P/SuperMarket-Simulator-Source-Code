@@ -79,7 +79,7 @@ public class YelbBox : MonoBehaviour
 	[Header("Floating")]
 	internal float TimeToCheck = 0.2f;
 
-	internal float PriceItem;
+	[SerializeField] internal float PriceItem;
 
 	private void Awake()
 	{

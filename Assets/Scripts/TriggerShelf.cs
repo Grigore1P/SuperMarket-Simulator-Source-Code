@@ -42,11 +42,16 @@ public class TriggerShelf : MonoBehaviour
 
 	public void UpdatePrice(float Value)
 	{
-
+		Debug.Log("Update Price =  " + Value);
+		for(int i = 0; i < Prices.Length; i++)
+		{
+			Prices[i].text = Value.ToString();
+		}
 	}
 
 	public void LoadShelfData()
 	{
+		Debug.Log("Load Shelf Data");
 		YelbController yelbController = UnityEngine.Object.FindObjectOfType<YelbController>();
 		string iDIInformation = ShelfData.transform.GetComponent<YelbReference>().IDIInformation;
 		if (!(iDIInformation != "") || string.IsNullOrEmpty(iDIInformation))
@@ -71,7 +76,9 @@ public class TriggerShelf : MonoBehaviour
 			string typeShelf = array[2];
 			string a = array[3];
 			string text = array[4];
-			if (!(transform.name == b) || !(a == "active"))
+
+          
+            if (!(transform.name == b) || !(a == "active"))
 			{
 				continue;
 			}
@@ -89,7 +96,7 @@ public class TriggerShelf : MonoBehaviour
 				for (int l = 0; l < computerButtons.Items.Length; l++)
 				{
 					ShopItem shopItem = computerButtons.Items[l];
-					if (shopItem.ImageIcon.name == b2)
+					if (shopItem.NameItem == b2)
 					{
 						GameObject gameObject = UnityEngine.Object.Instantiate(shopItem.OBJ);
 						gameObject.transform.SetParent(transform);
@@ -100,7 +107,7 @@ public class TriggerShelf : MonoBehaviour
 						itemInfo.Priceitem = float.Parse(text, System.Globalization.CultureInfo.InvariantCulture);
 						itemInfo.ItemName = shopItem.NameItem;
 						itemInfo.IconItem = shopItem.ImageIcon;
-						IconNameItem = shopItem.ImageIcon.name;
+						IconNameItem = shopItem.NameItem;
 						TypeShelf = typeShelf;
 					}
 				}
@@ -139,7 +146,8 @@ public class TriggerShelf : MonoBehaviour
 
 	public void UpdateShelfData()
 	{
-		Transform[] slotsMenu = SlotsMenu;
+       
+        Transform[] slotsMenu = SlotsMenu;
 		foreach (Transform transform in slotsMenu)
 		{
 			if (transform.transform.childCount > 0 && Prices[0].text != "")
@@ -155,6 +163,7 @@ public class TriggerShelf : MonoBehaviour
 			string text = "null";
 			if (transform2.childCount > 0)
 			{
+
 				currentTotalItems++;
               
 				text = "active";

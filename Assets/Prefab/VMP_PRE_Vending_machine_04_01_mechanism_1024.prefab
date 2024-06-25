@@ -21346,6 +21346,7 @@ GameObject:
   - component: {fileID: 1791407409317449385}
   - component: {fileID: 1791407411162945078}
   - component: {fileID: 1791407410340860986}
+  - component: {fileID: 7939705236587357795}
   m_Layer: 0
   m_Name: VMP_PRE_Vending_machine_04_01_mechanism_1024
   m_TagString: 
@@ -21411,6 +21412,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.21, y: 1.92, z: 0.58}
   m_Center: {x: 0, y: 0.99, z: 0}
+--- !u!114 &7939705236587357795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791407409267116930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543fd2896c3882947af370b587b49afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyPerTime: 100
+  timeForAddMoney: 180
 --- !u!1 &1791407409267116931
 GameObject:
   m_ObjectHideFlags: 0

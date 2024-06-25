@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Yelbouziani;
@@ -10,6 +11,7 @@ using Yelbouziani.Enum;
 
 public class YelbController : MonoBehaviour
 {
+	public static YelbController Instance;
 	[Header("Manager")]
 	internal YelbUI UIController;
 
@@ -67,6 +69,7 @@ public class YelbController : MonoBehaviour
 
 	private void Awake()
 	{
+		Instance = this;
 		if (YelbBackend.GetValueFromString("YelbLauncher") == "")
 		{
 			YelbBackend.SaveData(YelbRef.CashValue, "1500", DataType.floatV);
@@ -634,7 +637,7 @@ public class YelbController : MonoBehaviour
 				for (int num3 = 0; num3 < computerButtons3.Items.Length; num3++)
 				{
 					ShopItem shopItem3 = computerButtons3.Items[num3];
-					if (shopItem3.OBJ.name == text2 && shopItem3.ImageIcon.name == b)
+					if (shopItem3.OBJ.name == text2 && shopItem3.NameItem == b)
 					{
 						GameObject gameObject5 = UnityEngine.Object.Instantiate(shopItem3.OBJ);
 						YelbReference component3 = gameObject5.GetComponent<YelbReference>();
@@ -955,6 +958,89 @@ public class YelbController : MonoBehaviour
 			yield return null;
 		}
 	}
+
+	
+	public void OpenChangePricePanel(ItemInfo Item, TriggerShelf Shelf)
+	{
+        CharacterController.SetEraser(Status: false);
+        UIController.PanelPrices.SetActive(value: true);
+        InputField FieldValueFirst = UIController.PanelPrices.GetComponentInChildren<InputField>(includeInactive: true);
+        Button BtnConfirme = UIController.PanelPrices.GetComponentInChildren<Button>(includeInactive: true);
+        BtnConfirme.onClick.RemoveAllListeners();
+        Text component = UIController.PanelPrices.transform.GetChild(0).GetChild(1).Find("Current Price")
+            .GetComponent<Text>();
+        Text component2 = UIController.PanelPrices.transform.GetChild(0).GetChild(1).Find("Market Price")
+            .GetComponent<Text>();
+        UIController.PanelPrices.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>().sprite = Item.IconItem;
+        //Find default price for item
+        float oldPrice = 0;
+        bool findPrice = false;
+        for (int k = 0; k < ComputerController.COMP.Length; k++)
+        {
+            ComputerButtons computerButtons = ComputerController.COMP[k];
+            for (int l = 0; l < computerButtons.Items.Length; l++)
+            {
+                ShopItem shopItem = computerButtons.Items[l];
+                if (shopItem.NameItem == Shelf.IconNameItem)
+                {
+                    oldPrice = shopItem.PriceItem;
+                    findPrice = true;
+                    break;
+                }
+            }
+
+            if (findPrice)
+            {
+                break;
+            }
+        }
+		//
+        component2.text = "Market Price:   " + oldPrice.ToString() + "$";
+        component.text = "Current Price: " + Item.Priceitem.ToString() + "$";
+        FieldValueFirst.text = (Item.Priceitem.ToString() ?? "");
+
+
+        BtnConfirme.onClick.AddListener(delegate
+        {
+            if (FieldValueFirst.text != "" && !string.IsNullOrEmpty(FieldValueFirst.text))
+            {
+				float newPrice = float.Parse(FieldValueFirst.text);
+
+				float maxValueToAddPrice = oldPrice + (oldPrice / 2);
+
+				if((oldPrice + maxValueToAddPrice) < newPrice) // price it's to high to change
+				{
+                    List<string> information1 = new List<string>
+                    {
+                        "The new price is too high, try a lower value"
+                    };
+                    UnityEngine.Object.FindObjectOfType<YelbController>().SpawnNotification(information1, null);
+				}else if (newPrice <= 0)
+				{
+                    List<string> information1 = new List<string>
+                    {
+                        "The price must be greater than 0"
+                    };
+                    UnityEngine.Object.FindObjectOfType<YelbController>().SpawnNotification(information1, null);
+                }
+				else //Accept new price 
+				{
+                    List<string> information = new List<string>
+                    {
+                        "Change Price Done"
+                    };
+                    UnityEngine.Object.FindObjectOfType<YelbController>().SpawnNotification(information, null);
+                    Shelf.UpdatePrice(newPrice);
+                    Shelf.UpdateShelfData();
+                    UIController.PanelPrices.SetActive(value: false);
+                    BtnConfirme.gameObject.SetActive(value: false);
+                    CharacterController.SetEraser(Status: false);
+
+                }
+
+            }
+        });
+    }
 
 	[CompilerGenerated]
 	private static void _003CActivateInventory_003Eg__TakeAction_007C39_2()

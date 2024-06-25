@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Yelbouziani;
 using Yelbouziani.Enum;
 using Yelbouziani.Helper;
+using static System.Net.Mime.MediaTypeNames;
 
 public class YelbCharacter : MonoBehaviour
 {
@@ -240,41 +242,53 @@ public class YelbCharacter : MonoBehaviour
 					{
 						TriggerShelf ShelfTrigger = raycastHit.collider.gameObject.GetComponent<TriggerShelf>();
 						ShelfTrigger.SetActionToggle();
+
 						if (!_YelbController.LinkerController.FillShelfBtn.gameObject.activeSelf)
 						{
-							Button ShelfBtn = _YelbController.LinkerController.FillShelfBtn;
-							ShelfBtn.onClick.RemoveAllListeners();
-							//_003C_003Ec__DisplayClass28_2 CS_0024_003C_003E8__locals2;
-							ShelfBtn.onClick.AddListener(delegate
+							if (BoxHolding.ItemName == ShelfTrigger.IconNameItem || string.IsNullOrEmpty(ShelfTrigger.IconNameItem))
 							{
-								//CS_0024_003C_003E8__locals2._003CManagerLogic_003Eg__TakeAction_007C9(BoxHolding, ShelfTrigger);
-								Debug.Log("Put Object");
-								if (BoxHolding.Items.Count > 0)
+
+								Button ShelfBtn = _YelbController.LinkerController.FillShelfBtn;
+								ShelfBtn.onClick.RemoveAllListeners();
+								//_003C_003Ec__DisplayClass28_2 CS_0024_003C_003E8__locals2;
+								ShelfBtn.onClick.AddListener(delegate
 								{
-									// Items Box Has : BoxHolding.Items
-									// Position : ShelfTrigger.SlotsMenu[TotalItems]
-									BoxHolding.Items[0].gameObject.SetActive(true);
-									BoxHolding.Items[0].parent = ShelfTrigger.SlotsMenu[ShelfTrigger.TotalItems];
-									BoxHolding.Items[0].localPosition = Vector3.zero;
-									BoxHolding.Items[0].localRotation = Quaternion.identity;
-									BoxHolding.Items[0].localScale = new Vector3(1, 1, 1);
-									ShelfTrigger.UpdateShelfData();
-									BoxHolding.Items.RemoveAt(0);
+									//CS_0024_003C_003E8__locals2._003CManagerLogic_003Eg__TakeAction_007C9(BoxHolding, ShelfTrigger);
+									Debug.Log("Put Object");
+									if (BoxHolding.Items.Count > 0)
+									{
+										// Items Box Has : BoxHolding.Items
+										// Position : ShelfTrigger.SlotsMenu[TotalItems]
+										ItemInfo itemInfo = BoxHolding.Items[0].AddComponent<ItemInfo>();
+										itemInfo.Priceitem = BoxHolding.PriceItem;
+										itemInfo.ItemName = BoxHolding.ItemName;
+										itemInfo.IconItem = BoxHolding.IconItem;
+										BoxHolding.Items[0].gameObject.SetActive(true);
+										BoxHolding.Items[0].parent = ShelfTrigger.SlotsMenu[ShelfTrigger.TotalItems];
+										BoxHolding.Items[0].localPosition = Vector3.zero;
+										BoxHolding.Items[0].localRotation = Quaternion.identity;
+										BoxHolding.Items[0].localScale = new Vector3(1, 1, 1);
+										ShelfTrigger.IconNameItem = BoxHolding.ItemName;
+                                        ShelfTrigger.UpdatePrice(BoxHolding.PriceItem);
+										ShelfTrigger.UpdateShelfData();
+										BoxHolding.Items.RemoveAt(0);
 
-								}
-								
-                                /*
-								 * Steps : 
-								 *  1 - Select Items that box has
-								 *  2 - Select Where to put the item
-								 *  3 - Put First Item on the shelf
-								 *  4 - Remove first item from the box.items
-								 *  & - Debug Actions
-								 */
-                            });
+									}
 
-							_YelbController.LinkerController.FillShelfBtn.gameObject.SetActive(value: true);
-						}
+									/*
+									 * Steps : 
+									 *  1 - Select Items that box has
+									 *  2 - Select Where to put the item
+									 *  3 - Put First Item on the shelf
+									 *  4 - Remove first item from the box.items
+									 *  & - Debug Actions
+									 */
+								});
+                                _YelbController.LinkerController.FillShelfBtn.gameObject.SetActive(value: true);
+
+                            }
+
+                        }
 						if (!ShelfingTriggers.Contains(ShelfTrigger))
 						{
 							ShelfingTriggers.Add(ShelfTrigger);
@@ -360,7 +374,9 @@ public class YelbCharacter : MonoBehaviour
 			{
 				SetPrice component = raycastHit.collider.GetComponent<SetPrice>();
 				TriggerShelf Shelf = component.Shelf;
-				bool flag = false;
+				
+
+                bool flag = false;
 				for (int j = 0; j < component.Shelf.SlotsMenu.Length; j++)
 				{
 					if (component.Shelf.SlotsMenu[j].childCount > 0)
@@ -370,17 +386,23 @@ public class YelbCharacter : MonoBehaviour
 				}
 				if (flag)
 				{
-					_YelbController.LinkerController.MoveBtn.gameObject.SetActive(value: false);
+					ItemInfo itemInfo = Shelf.SlotsMenu[0].transform.GetChild(0).GetComponent<ItemInfo>();
+
+                    _YelbController.LinkerController.MoveBtn.gameObject.SetActive(value: false);
 					if (!_YelbController.LinkerController.ChangePriceBtn.gameObject.activeSelf)
 					{
 						Button changePriceBtn = _YelbController.LinkerController.ChangePriceBtn;
 						changePriceBtn.onClick.RemoveAllListeners();
-						/*_003C_003Ec__DisplayClass28_3 CS_0024_003C_003E8__locals1;
+						changePriceBtn.onClick.AddListener(() =>
+						{
+							_YelbController.OpenChangePricePanel(itemInfo,Shelf);
+						});
+                        /*_003C_003Ec__DisplayClass28_3 CS_0024_003C_003E8__locals1;
 						changePriceBtn.onClick.AddListener(delegate
 						{
 							CS_0024_003C_003E8__locals1._003CManagerLogic_003Eg__TakeAction_007C14();
 						});*/
-						_YelbController.LinkerController.ChangePriceBtn.gameObject.SetActive(value: true);
+                        _YelbController.LinkerController.ChangePriceBtn.gameObject.SetActive(value: true);
 					}
 				}
 			}

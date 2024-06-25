@@ -92,7 +92,10 @@ public class SideCashier : MonoBehaviour
 		};
 		_YelbController.SpawnNotification(information, null);
 		SaveBridge.SetFloatPP(YelbRef.CashValue, YelbBackend.GetValueFromFloat(YelbRef.CashValue) + TotalPrice);
-		yield return new WaitForEndOfFrame();
+        SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, YelbBackend.GetValueFromFloat(YelbRef.LevelPickedValue) +  10f);
+		_YelbController.LevelInformations();
+
+        yield return new WaitForEndOfFrame();
 		NPC.FinishShopping = true;
 		IsBusy = false;
 		Clients.Remove(NPC.gameObject.transform);
