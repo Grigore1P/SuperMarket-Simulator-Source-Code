@@ -794,7 +794,9 @@ public class YelbController : MonoBehaviour
 				{
 					//BOX.SpawnBigObject(new Vector3(15, 0, 8));//CS_0024_003C_003E8__locals0._003CActivateInventory_003Eg__TakeAction_007C1();
 					BOX.IsOnUses(true, CharacterController.HolderBox);//CS_0024_003C_003E8__locals0._003CActivateInventory_003Eg__TakeAction_007C1();
-				});
+                    PickUp.gameObject.SetActive(value: false);
+
+                });
 				PickUp.gameObject.SetActive(value: true);
 			}
 			if (!InfoPromt.gameObject.activeSelf)
