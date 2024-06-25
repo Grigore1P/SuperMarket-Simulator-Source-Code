@@ -14,7 +14,8 @@ public class YelbAudioManager : MonoBehaviour
 
 	public AudioSource ClickSound;
 
-    public AudioSource Pip;
+
+    public AudioSource[] PipSounds;
 
     private void Start()
 	{
@@ -51,5 +52,10 @@ public class YelbAudioManager : MonoBehaviour
 	public void SoundPlay(AudioSource[] SD)
 	{
 		SD[Random.Range(0, SD.Length)].Play();
+	}
+
+	public void PipPlay()
+	{
+		PipSounds[Random.Range(0, PipSounds.Length)].Play();
 	}
 }

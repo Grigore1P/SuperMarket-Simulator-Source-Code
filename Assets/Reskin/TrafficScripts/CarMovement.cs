@@ -28,9 +28,9 @@ public class CarMovement : MonoBehaviour
             if (hit.collider.CompareTag("Player"))
             {
                 move = false;
-                if (wasMoving) // Check if the car was moving before stopping
+                if (wasMoving) 
                 {
-                    yelbAudio.Pip.Play();
+                    yelbAudio.PipPlay();
                 }
             }
         }
