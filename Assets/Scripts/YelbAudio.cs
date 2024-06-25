@@ -11,7 +11,10 @@ public class YelbAudio : MonoBehaviour
 
 	public AudioSource SoundClick;
 
-	private void Start()
+
+
+
+    private void Start()
 	{
 		MusicBg.Play();
 		Button[] array = UnityEngine.Object.FindObjectsOfType<Button>(includeInactive: true);
@@ -31,5 +34,5 @@ public class YelbAudio : MonoBehaviour
 		YelbBackend.GetVolume(VolumeMode.music);
 		MusicBg.volume = volume2;
 		SoundClick.volume = volume;
-	}
+    }
 }

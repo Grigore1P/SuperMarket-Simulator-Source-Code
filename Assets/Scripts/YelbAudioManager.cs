@@ -14,7 +14,9 @@ public class YelbAudioManager : MonoBehaviour
 
 	public AudioSource ClickSound;
 
-	private void Start()
+    public AudioSource Pip;
+
+    private void Start()
 	{
 		Button[] array = UnityEngine.Object.FindObjectsOfType<Button>(includeInactive: true);
 		for (int i = 0; i < array.Length; i++)

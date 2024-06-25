@@ -12,7 +12,7 @@ public class CarMovement : MonoBehaviour
     public bool Move => move;
     Vector3 targetPosition;
     [SerializeField] private LayerMask playerLayer;
-
+    public YelbAudioManager yelbAudio;
 
     void Start()
     {
@@ -21,11 +21,17 @@ public class CarMovement : MonoBehaviour
 
     void Update()
     {
+        bool wasMoving = move;
+
         if (Physics.Raycast(RayOrigin.position, transform.forward, out RaycastHit hit, 6f, playerLayer))
         {
             if (hit.collider.CompareTag("Player"))
             {
                 move = false;
+                if (wasMoving) // Check if the car was moving before stopping
+                {
+                    yelbAudio.Pip.Play();
+                }
             }
         }
         else
@@ -65,8 +71,8 @@ public class CarMovement : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
         }
-        // Move towards the target position
     }
+
     void OnDrawGizmos()
     {
         // Draw the raycast line in the editor for debugging
