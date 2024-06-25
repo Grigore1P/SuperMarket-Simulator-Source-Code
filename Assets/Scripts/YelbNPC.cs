@@ -107,7 +107,10 @@ public class YelbNPC : MonoBehaviour
 			{
 				WaitingTime = 0.1f;
 			}
-			if (num == 0 || num == 1)
+
+          
+
+            if (num == 0 || num == 1)
 			{
 				Mode = ModePayement.MasterCard;
 			}

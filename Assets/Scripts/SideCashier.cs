@@ -91,7 +91,7 @@ public class SideCashier : MonoBehaviour
 			"EMPLOYEE SOLD: $" + TotalPrice.ToString()
 		};
 		_YelbController.SpawnNotification(information, null);
-		PlayerPrefs.SetFloat(YelbRef.CashValue, YelbBackend.GetValueFromFloat(YelbRef.CashValue) + TotalPrice);
+		SaveBridge.SetFloatPP(YelbRef.CashValue, YelbBackend.GetValueFromFloat(YelbRef.CashValue) + TotalPrice);
 		yield return new WaitForEndOfFrame();
 		NPC.FinishShopping = true;
 		IsBusy = false;

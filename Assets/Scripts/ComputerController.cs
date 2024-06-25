@@ -106,6 +106,10 @@ public class ComputerController : MonoBehaviour
 	[Header("Int")]
 	internal float TotalPricePaid;
 
+    public YelbCharacter CharacterManager;
+    [SerializeField] private GameObject mouse;
+	[SerializeField] private GameObject optionsPanel;
+
 	private void OnEnable()
 	{
 		for (int i = 0; i < COMP.Length; i++)
@@ -123,9 +127,14 @@ public class ComputerController : MonoBehaviour
 		}
 		else
 		{
-			PlayerPrefs.SetFloat(base.name, 1f);
+			SaveBridge.SetFloatPP(base.name, 1f);
 		}
-	}
+
+		mouse.SetActive(true);
+        optionsPanel.SetActive(false);
+        CharacterManager._Controller.enabled = false;
+
+    }
 
 	private void LateUpdate()
 	{
@@ -184,7 +193,7 @@ public class ComputerController : MonoBehaviour
 		*/
 		float valueFromFloat = YelbBackend.GetValueFromFloat(YelbRef.CashValue);
 		float num = 200f;
-		PlayerPrefs.SetFloat(YelbRef.CashValue, valueFromFloat + num);
+		SaveBridge.SetFloatPP(YelbRef.CashValue, valueFromFloat + num);
 	}
 
 	void CompleteMethod(bool value)
@@ -206,7 +215,7 @@ public class ComputerController : MonoBehaviour
 			}
 			Object.FindObjectOfType<YelbController>().SpawnNotification(list, ModesData);
 			ClearAllBasket();
-			PlayerPrefs.SetFloat(YelbRef.CashValue, valueFromFloat - totalPricePaid);
+			SaveBridge.SetFloatPP(YelbRef.CashValue, valueFromFloat - totalPricePaid);
 		}
 		else
 		{
@@ -449,4 +458,13 @@ public class ComputerController : MonoBehaviour
 			IconItem = Info.GetComponent<ManagerSpawning>().IconItem
 		});
 	}
+
+    private void OnDisable()
+    {
+		mouse.SetActive(false);
+        optionsPanel.SetActive(false);
+        CharacterManager._Controller.enabled = true;
+
+
+    }
 }

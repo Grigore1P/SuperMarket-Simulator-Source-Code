@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Yelbouziani;
 using Yelbouziani.Enum;
@@ -122,13 +123,13 @@ public class YelbCharacter : MonoBehaviour
 	{
 		if (BOOL.IsLocked)
 		{
-			SenstiveCamX = 6f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
-			SenstiveCamY = 6f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
+			SenstiveCamX = 4f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
+			SenstiveCamY = 4f * YelbBackend.GetValueFromFloat(YelbRef.ValueCashier);
 		}
 		else
 		{
-			SenstiveCamX = 12f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookX);
-			SenstiveCamY = 12f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookY);
+			SenstiveCamX = 5f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookX);
+			SenstiveCamY = 5f * YelbBackend.GetValueFromFloat(YelbRef.ValueLookY);
 		}
 	}
 
@@ -710,71 +711,112 @@ public class YelbCharacter : MonoBehaviour
 	{
 		Debug.Log("_003CManagerLogic_003Eg__TakeAction_007C28_2");
 		Object.FindObjectOfType<YelbAudioManager>().ClickSound.Play();
+
+		
 		YelbNPC.NPC NPC = CashData.UsingCharacter.GetComponent<YelbNPC.NPC>();
-		Transform bankInput = CashData.BankInput;
-		GameObject PlayGlow = bankInput.GetChild(0).gameObject;
-		GameObject ArrowGlow = bankInput.GetChild(1).GetChild(1).GetChild(0)
-			.GetChild(0)
-			.gameObject;
-		GameObject PanelContainer = bankInput.GetChild(1).GetChild(1).GetChild(0)
-			.gameObject;
-		Button CheckValue = bankInput.GetChild(1).GetChild(0).GetComponent<Button>();
-		InputField FieldInformation = bankInput.GetChild(1).GetChild(1).GetChild(0)
-			.GetChild(2)
-			.gameObject.GetComponent<InputField>();
-		NPC.Bankcard.gameObject.SetActive(value: false);
-		NPC.CashHandy.gameObject.SetActive(value: false);
-		PanelContainer.gameObject.SetActive(value: true);
-		ArrowGlow.gameObject.SetActive(value: true);
-		CheckValue.onClick.RemoveAllListeners();
-		//_003C_003Ec__DisplayClass28_0 CS_0024_003C_003E8__locals0;
-		FieldInformation.onValueChanged.AddListener(delegate
+
+		if (NPC.Bankcard.gameObject.activeSelf)
 		{
-			Debug.Log("value changed");//CS_0024_003C_003E8__locals0._003CManagerLogic_003Eg__EventClickInputField_007C5
-			CashData.BankInput.GetChild(0).gameObject.SetActive(true);
-		}
-		);
-		CheckValue.onClick.AddListener(delegate
-		{
-			//CS_0024_003C_003E8__locals0._003CManagerLogic_003Eg__BtnCheckingPaid_007C4();
-			Debug.Log("check value btn listener");
-			string price = "";
-			for(int i = 0; i < CashData.PriceTotal.text.Length - 1; i++)
+            Transform bankInput = CashData.BankInput;
+            GameObject PlayGlow = bankInput.GetChild(0).gameObject;
+            GameObject ArrowGlow = bankInput.GetChild(1).GetChild(1).GetChild(0)
+                .GetChild(0)
+                .gameObject;
+            GameObject PanelContainer = bankInput.GetChild(1).GetChild(1).GetChild(0)
+                .gameObject;
+            Button CheckValue = bankInput.GetChild(1).GetChild(0).GetComponent<Button>();
+            InputField FieldInformation = bankInput.GetChild(1).GetChild(1).GetChild(0)
+                .GetChild(2)
+                .gameObject.GetComponent<InputField>();
+            NPC.Bankcard.gameObject.SetActive(value: false);
+            NPC.CashHandy.gameObject.SetActive(value: false);
+            PanelContainer.gameObject.SetActive(value: true);
+            ArrowGlow.gameObject.SetActive(value: true);
+            CheckValue.onClick.RemoveAllListeners();
+            //_003C_003Ec__DisplayClass28_0 CS_0024_003C_003E8__locals0;
+
+            EventSystem.current.SetSelectedGameObject(FieldInformation.gameObject);
+            FieldInformation.onValueChanged.AddListener(delegate
             {
-				price += CashData.PriceTotal.text[i];
-			}
-			Debug.Log("Price is : " + price);
-			if (FieldInformation.text != price)
-            {
-				Debug.Log("wrong value !");
+                Debug.Log("value changed");//CS_0024_003C_003E8__locals0._003CManagerLogic_003Eg__EventClickInputField_007C5
+                CashData.BankInput.GetChild(0).gameObject.SetActive(true);
             }
-            else
+            );
+            CheckValue.onClick.AddListener(delegate
             {
-				CashData.BankInput.GetChild(0).gameObject.SetActive(false);
-				Debug.Log("correct value !");
-				CashData.removeClient(NPC);
-				StartCoroutine(ResetCameraPosition(false));
-				_YelbController.UIController.PanelController.SetActive(value: true);
-				_YelbController.LinkerController.LeaveCash.gameObject.SetActive(value: true);
-				_YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: true);
-				BOOL.IsMoveCameraForPay = false;
-				FieldInformation.text = "";
-				PlayerPrefs.SetFloat("CashValue" , PlayerPrefs.GetFloat("CashValue") + float.Parse(price));
-			}
-			/*
-			 * Check product and value of the introduced value
-			 *  |-- if true  : pass client 
-			 *    |-- 
-			 *  |-- if false : debug error
-			 */
-		});
-		Debug.Log("Call Btn");
-		PositionCamera = CameraTransform.localPosition;
-		RotationCamera = CameraTransform.localEulerAngles;
-		BOOL.IsMoveCameraForPay = true;
-		StartCoroutine(ResetCameraPosition(Moving: true));
-		_YelbController.UIController.PanelController.SetActive(value: false);
-		_YelbController.LinkerController.LeaveCash.gameObject.SetActive(value: false);
+                //CS_0024_003C_003E8__locals0._003CManagerLogic_003Eg__BtnCheckingPaid_007C4();
+                Debug.Log("check value btn listener");
+                string price = "";
+                for (int i = 0; i < CashData.PriceTotal.text.Length - 1; i++)
+                {
+                    price += CashData.PriceTotal.text[i];
+                }
+                Debug.Log("Price is : " + price);
+                if (FieldInformation.text != price)
+                {
+                    //Debug.Log("wrong value !");
+                    List<string> information = new List<string>
+                    {
+                      "Wrong Value!"
+                    };
+                    _YelbController.SpawnNotification(information, null);
+                }
+                else
+                {
+                    CashData.BankInput.GetChild(0).gameObject.SetActive(false);
+                    Debug.Log("correct value !");
+                    CashData.removeClient(NPC);
+                    StartCoroutine(ResetCameraPosition(false));
+                    _YelbController.UIController.PanelController.SetActive(value: true);
+                    _YelbController.LinkerController.LeaveCash.gameObject.SetActive(value: true);
+                    _YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: true);
+                    BOOL.IsMoveCameraForPay = false;
+                    FieldInformation.text = "";
+                    SaveBridge.SetFloatPP("CashValue", SaveBridge.GetFloatPP("CashValue", 150) + float.Parse(price));
+                    EventSystem.current.SetSelectedGameObject(null);
+
+                }
+                /*
+                 * Check product and value of the introduced value
+                 *  |-- if true  : pass client 
+                 *    |-- 
+                 *  |-- if false : debug error
+                 */
+            });
+
+            Debug.Log("Call Btn");
+            PositionCamera = CameraTransform.localPosition;
+            RotationCamera = CameraTransform.localEulerAngles;
+            BOOL.IsMoveCameraForPay = true;
+            StartCoroutine(ResetCameraPosition(Moving: true));
+            _YelbController.UIController.PanelController.SetActive(value: false);
+            _YelbController.LinkerController.LeaveCash.gameObject.SetActive(value: false);
+        }
+        else //  NPC.CashHandy.gameObject its active
+        {
+            string price = "";
+            for (int i = 0; i < CashData.PriceTotal.text.Length - 1; i++)
+            {
+                price += CashData.PriceTotal.text[i];
+            }
+          
+                CashData.BankInput.GetChild(0).gameObject.SetActive(false);
+                Debug.Log("correct value !");
+                CashData.removeClient(NPC);
+            PositionCamera = CameraTransform.localPosition;
+            RotationCamera = CameraTransform.localEulerAngles;
+            StartCoroutine(ResetCameraPosition(false));
+                _YelbController.UIController.PanelController.SetActive(value: true);
+                _YelbController.LinkerController.LeaveCash.gameObject.SetActive(value: true);
+                _YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: true);
+                BOOL.IsMoveCameraForPay = false;
+                SaveBridge.SetFloatPP("CashValue", SaveBridge.GetFloatPP("CashValue", 150) + float.Parse(price));
+                EventSystem.current.SetSelectedGameObject(null);
+        }
+
+		
+		
+		
 		_YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: false);
 	}
 

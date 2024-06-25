@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class CashRegister : MonoBehaviour
 {
-	[Header("Manager")]
+
+    [Header("Manager")]
 	internal BooleanManager BOOL;
 
 	[Header("Boolean Manager")]
@@ -108,7 +109,12 @@ public class CashRegister : MonoBehaviour
 		{
 			UnityEngine.Object.Destroy(ContainerItems.GetChild(i).gameObject);
 		}
-		PriceTotal.text = "0$";
+		for (int j = 0; j < CashItems.Count;j++)
+		{
+			UnityEngine.Object.Destroy(CashItems[j].gameObject);
+        }
+        CashItems.Clear();
+        PriceTotal.text = "0$";
 	}
 
 	public void removeClient(YelbNPC.NPC NPC)
@@ -125,7 +131,7 @@ public class CashRegister : MonoBehaviour
 		TotalClients--;
 		TotalItemScane = 0;
 		CLearMacina();
-		CashItems.Clear();
+		
 		Clients.RemoveAt(0);
 		UsingCharacter = null;
 		IsBussy = false;
