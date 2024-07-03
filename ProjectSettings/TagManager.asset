@@ -9,6 +9,7 @@ TagManager:
   - Missile
   - NPC
   - deathNPC
+  - Car
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: "Default"
+  - name: Default
     uniqueID: 0
     locked: 0

@@ -92,7 +92,8 @@ public class SideCashier : MonoBehaviour
 		};
 		_YelbController.SpawnNotification(information, null);
 		SaveBridge.SetFloatPP(YelbRef.CashValue, YelbBackend.GetValueFromFloat(YelbRef.CashValue) + TotalPrice);
-        SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, YelbBackend.GetValueFromFloat(YelbRef.LevelPickedValue) +  10f);
+
+        SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, YelbBackend.GetValueFromFloat(YelbRef.LevelPickedValue) + 10f);
 		_YelbController.LevelInformations();
 
         yield return new WaitForEndOfFrame();

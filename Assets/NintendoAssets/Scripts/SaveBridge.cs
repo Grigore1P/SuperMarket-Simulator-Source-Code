@@ -205,6 +205,7 @@ public static class SaveBridge
         cache.Save(key,value);
 #else
         PlayerPrefs.SetInt(key,value);
+
 #endif
     }
 
@@ -245,6 +246,7 @@ public static class SaveBridge
         cache.Save(key,value);
 #else
         PlayerPrefs.SetString(key,value);
+
 #endif
     }
 

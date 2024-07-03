@@ -70,7 +70,7 @@ public class YelbCharacter : MonoBehaviour
 
 	private void Awake()
 	{
-		StartCoroutine(adsCheck());
+		
 		CashData = UnityEngine.Object.FindObjectOfType<CashRegister>(includeInactive: true);
 		BOOL = base.gameObject.AddComponent<BooleanManager>();
 		STINGCONTROLLER = base.gameObject.AddComponent<StringsManager>();
@@ -190,7 +190,8 @@ public class YelbCharacter : MonoBehaviour
 							//CS_0024_003C_003E8__locals3._003CManagerLogic_003Eg__TakeAction_007C7();
 							Debug.Log("Pass item");
 							CashData.MoveItemToScan(Information);
-						});
+                            ClickItem.onClick.RemoveAllListeners();
+                        });
 						_YelbController.LinkerController.BtnInteract.interactable = true;
 						_YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: true);
 					}
@@ -255,7 +256,7 @@ public class YelbCharacter : MonoBehaviour
 								{
 									//CS_0024_003C_003E8__locals2._003CManagerLogic_003Eg__TakeAction_007C9(BoxHolding, ShelfTrigger);
 									Debug.Log("Put Object");
-									if (BoxHolding.Items.Count > 0)
+									if (BoxHolding.Items.Count > 0 && ShelfTrigger.SlotsMenu.Length > ShelfTrigger.TotalItems)
 									{
 										// Items Box Has : BoxHolding.Items
 										// Position : ShelfTrigger.SlotsMenu[TotalItems]
@@ -310,16 +311,20 @@ public class YelbCharacter : MonoBehaviour
 				}
 				if (point2.x != 0f && point2.z != 0f && raycastHit.collider != null)
 				{
-					BoxHolding.SetPosLocated(point2, fixedPositionY);
-					_YelbController.LinkerController.DropBtn.gameObject.SetActive(value: true);
-					Button DropBtn = _YelbController.LinkerController.DropBtn;
-					DropBtn.onClick.RemoveAllListeners();
-					DropBtn.onClick.AddListener(delegate
+					if (layer == 14)
 					{
-						Debug.Log("Drop");
-						BoxHolding.IsOnUses(false, null);
-					});
-					_YelbController.LinkerController.DropBtn.interactable = true;
+                        BoxHolding.SetPosLocated(point2, fixedPositionY);
+                        _YelbController.LinkerController.DropBtn.gameObject.SetActive(value: true);
+                        Button DropBtn = _YelbController.LinkerController.DropBtn;
+                        DropBtn.onClick.RemoveAllListeners();
+                        DropBtn.onClick.AddListener(delegate
+                        {
+                            Debug.Log("Drop");
+                            BoxHolding.IsOnUses(false, null);
+                        });
+                        _YelbController.LinkerController.DropBtn.interactable = true;
+                    }
+				
 				}
 				else
 				{
@@ -731,7 +736,7 @@ public class YelbCharacter : MonoBehaviour
 	[CompilerGenerated]
 	private void _003CManagerLogic_003Eg__TakeAction_007C28_2()
 	{
-		Debug.Log("_003CManagerLogic_003Eg__TakeAction_007C28_2");
+		
 		Object.FindObjectOfType<YelbAudioManager>().ClickSound.Play();
 
 		
@@ -795,6 +800,8 @@ public class YelbCharacter : MonoBehaviour
                     BOOL.IsMoveCameraForPay = false;
                     FieldInformation.text = "";
                     SaveBridge.SetFloatPP("CashValue", SaveBridge.GetFloatPP("CashValue", 150) + float.Parse(price));
+                    SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, YelbBackend.GetValueFromFloat(YelbRef.LevelPickedValue) + 10f);
+                    _YelbController.LevelInformations();
                     EventSystem.current.SetSelectedGameObject(null);
 
                 }
@@ -833,11 +840,11 @@ public class YelbCharacter : MonoBehaviour
                 _YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: true);
                 BOOL.IsMoveCameraForPay = false;
                 SaveBridge.SetFloatPP("CashValue", SaveBridge.GetFloatPP("CashValue", 150) + float.Parse(price));
-                EventSystem.current.SetSelectedGameObject(null);
-        }
 
-		
-		
+            SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, YelbBackend.GetValueFromFloat(YelbRef.LevelPickedValue) + 10f);
+            _YelbController.LevelInformations();
+            EventSystem.current.SetSelectedGameObject(null);
+        }
 		
 		_YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: false);
 	}

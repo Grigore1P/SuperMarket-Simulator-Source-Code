@@ -5,6 +5,8 @@ public class CarMovement : MonoBehaviour
 {
     public Transform[] waypoints;
     [SerializeField] private Transform RayOrigin;
+    [SerializeField] private Transform RayOrigin1;
+    [SerializeField] private Transform RayOrigin2;
     public float speed = 50f;
     public float rotationSpeed = 2f; // Adjusted for smoother rotation
     [SerializeField] private int currentWaypointIndex = 1;
@@ -13,6 +15,7 @@ public class CarMovement : MonoBehaviour
     Vector3 targetPosition;
     [SerializeField] private LayerMask playerLayer;
     public YelbAudioManager yelbAudio;
+  
 
     void Start()
     {
@@ -25,15 +28,50 @@ public class CarMovement : MonoBehaviour
 
         if (Physics.Raycast(RayOrigin.position, transform.forward, out RaycastHit hit, 6f, playerLayer))
         {
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Car"))
             {
                 move = false;
-                if (wasMoving) 
+                if (wasMoving && hit.collider.CompareTag("Player"))
                 {
                     yelbAudio.PipPlay();
                 }
             }
+            else
+            {
+                move = true;
+            }
         }
+        else if (Physics.Raycast(RayOrigin1.position, transform.forward, out RaycastHit hit1, 6f, playerLayer))
+        {
+            if (hit1.collider.CompareTag("Player"))
+            {
+                move = false;
+                if (wasMoving && hit1.collider.CompareTag("Player"))
+                {
+                    yelbAudio.PipPlay();
+                }
+            }
+            else
+            {
+                move = true;
+            }
+        }
+        else if (Physics.Raycast(RayOrigin2.position, transform.forward, out RaycastHit hit2, 6f, playerLayer))
+        {
+            if (hit2.collider.CompareTag("Player"))
+            {
+                move = false;
+                if (wasMoving && hit2.collider.CompareTag("Player"))
+                {
+                    yelbAudio.PipPlay();
+                }
+            }
+            else
+            {
+                move = true;
+            }
+        }
+
         else
         {
             move = true;

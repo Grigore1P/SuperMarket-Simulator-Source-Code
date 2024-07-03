@@ -14,4 +14,9 @@ public class YelbManager : MonoBehaviour
 	{
 		
 	}
+
+    private void OnDisable()
+    {
+		PlayerPrefs.Save();
+    }
 }

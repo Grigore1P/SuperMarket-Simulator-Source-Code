@@ -65,7 +65,7 @@ public class YelbController : MonoBehaviour
 	internal int TotalItems;
 
 	[Header("Floating")]
-	internal float UpdatedItems = 200f;
+	internal float UpdatedItems = 100f;
 
 	private void Awake()
 	{
@@ -125,9 +125,7 @@ public class YelbController : MonoBehaviour
 		QualitySettings.resolutionScalingFixedDPIFactor = 0.5f + YelbBackend.GetValueFromFloat(YelbRef.ValueResolution);
 	}
 
-	private void Update()
-	{
-	}
+	
 
 	private void LateUpdate()
 	{
@@ -139,8 +137,31 @@ public class YelbController : MonoBehaviour
 		{
 			IsEmptyShop = true;
 		}
+		
 		CashValue.text = YelbBackend.GetValueFromFloat(YelbRef.CashValue).ToString("F2") + "$";
-	}
+
+
+        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 2000)
+		{
+			TrophyManager.Instance.UnlockTrophy(0);
+		}
+        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 3000)
+        {
+            TrophyManager.Instance.UnlockTrophy(1);
+        }
+        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 4000)
+        {
+            TrophyManager.Instance.UnlockTrophy(2);
+        }
+        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 5000)
+        {
+            TrophyManager.Instance.UnlockTrophy(3);
+        }
+        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 6000)
+        {
+            TrophyManager.Instance.UnlockTrophy(4);
+        }
+    }
 
 	private void Init()
 	{
@@ -185,16 +206,19 @@ public class YelbController : MonoBehaviour
 
 	public void LevelInformations()
 	{
+		Debug.Log("LevelInformation add experience");
 		float valueFromFloat = YelbBackend.GetValueFromFloat(YelbRef.LevelPickedValue);
 		float fillAmount = valueFromFloat / UpdatedItems;
 		LevelValueFill.fillAmount = fillAmount;
-		if (valueFromFloat >= 1f)
+		if (fillAmount >=1 )
 		{
 			GameObject.Find("WinsoundNextLevel").GetComponent<AudioSource>().Play();
 			SaveBridge.SetFloatPP(YelbRef.StoreLevel, YelbBackend.GetValueFromFloat(YelbRef.StoreLevel) + 1f);
 			StoreLevel.text = "STORE LEVEL " + YelbBackend.GetValueFromFloat(YelbRef.StoreLevel).ToString();
             SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, 0f);
-		}
+			LevelValueFill.fillAmount = 0;
+
+        }
 		else
 		{
 			StoreLevel.text = "STORE LEVEL " + YelbBackend.GetValueFromFloat(YelbRef.StoreLevel).ToString();
@@ -610,7 +634,7 @@ public class YelbController : MonoBehaviour
 					for (int n = 0; n < computerButtons2.Items.Length; n++)
 					{
 						ShopItem shopItem2 = computerButtons2.Items[n];
-						if (shopItem2.NameItem == text3 && shopItem2.ImageIcon.name == b)
+						if (shopItem2.NameItem == text3 && shopItem2.ImageIcon.name  == b)
 						{
 							GameObject gameObject4 = UnityEngine.Object.Instantiate(shopItem2.OBJ);
 							gameObject4.name = shopItem2.OBJ.name;
@@ -637,7 +661,7 @@ public class YelbController : MonoBehaviour
 				for (int num3 = 0; num3 < computerButtons3.Items.Length; num3++)
 				{
 					ShopItem shopItem3 = computerButtons3.Items[num3];
-					if (shopItem3.OBJ.name == text2 && shopItem3.NameItem == b)
+					if (shopItem3.OBJ.name == text2 && shopItem3.ImageIcon.name == b)
 					{
 						GameObject gameObject5 = UnityEngine.Object.Instantiate(shopItem3.OBJ);
 						YelbReference component3 = gameObject5.GetComponent<YelbReference>();
@@ -1033,7 +1057,6 @@ public class YelbController : MonoBehaviour
                     Shelf.UpdatePrice(newPrice);
                     Shelf.UpdateShelfData();
                     UIController.PanelPrices.SetActive(value: false);
-                    BtnConfirme.gameObject.SetActive(value: false);
                     CharacterController.SetEraser(Status: false);
 
                 }

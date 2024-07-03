@@ -649,6 +649,9 @@ namespace Yelbouziani
 				SaveBridge.SetIntPP(ID, int.Parse(Information));
 				break;
 			}
+
+			
+			
 		}
 
 		public static void SetVolume(float Value, VolumeMode Mode)
@@ -665,9 +668,10 @@ namespace Yelbouziani
 				SaveBridge.SetFloatPP("YelbEffect", Value);
 				break;
 			}
-		}
+           
+        }
 
-		public static void LoadSceneMode(SceneLoadMode Mode, int Value = 0)
+        public static void LoadSceneMode(SceneLoadMode Mode, int Value = 0)
 		{
 			switch (Mode)
 			{

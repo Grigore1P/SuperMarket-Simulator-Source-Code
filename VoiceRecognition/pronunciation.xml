@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<gamePackage>
+  <language id="00" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p e r m o r k i t ___ m a n e j e r ___ s i m j e r e j t e r ___ e m p a j e r</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="01" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s uw p er m aa r k ih t ___ m ae n ax jh er ___ s ih m y ax l ey t er ___ eh m p ay er</pronunciation>
+    </speechRecognitionWords>
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s uw p ax m aa k ih t ___ m ae n ih jh ax r ___ s ih m y uw l ey t ax r ___ eh m p ay ax r</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="02" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s y p E R m a R k E ___ m a n a d Z e ___ s i m y l a t O R ___ aN p i R</pronunciation>
+    </speechRecognitionWords>
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s y p E R m a R k E ___ m a n a d Z e ___ s i m y l a s O R ___ aN p i R</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="03" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p e r m a r k e t ___ m a n a x e r ___ s i m u l a t o r ___ e m p i r e</pronunciation>
+    </speechRecognitionWords>
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p e r m a r k e t ___ m a n a g e r ___ s i m u l a t o r ___ e m p i r e</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="04" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>z u p e R m a R k ae t ___ m a n a g er ___ z i m u l a t o R ___ e m p e R</pronunciation>
+    </speechRecognitionWords>
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>z u p e R m a R k ae t ___ m a n a g er ___ z i m u l a t o R ___ e m p i R ae</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="05" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p e r m a r k e ___ m a n a dZ e r ___ s i m u l a t o r ___ e m p i r e</pronunciation>
+    </speechRecognitionWords>
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p e r m a r k e ___ m a n a g e r ___ s i m u l a t o r ___ e m p i r e</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="08" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p ae r m o ri k ih t ___ m a n ae Z ae r ___ s ih m Z ae l e j t ae r ___ eh m p a j ae r</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="16" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p e r m a r k e t ___ m a n a g e r ___ s iy m u l a t o r ___ e m p a j e r</pronunciation>
+    </speechRecognitionWords>
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s u p e r m a r k e t ___ m a n a g e r ___ s iy m u l a t o r ___ e m p iy r e</pronunciation>
+    </speechRecognitionWords>
+  </language>
+  <language id="18" modified="0">
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s uw p ax m aa k ih t ___ m ae n ih jh ax r ___ s ih m y uw l ey t ax r ___ eh m p ay ax r</pronunciation>
+    </speechRecognitionWords>
+    <speechRecognitionWords>
+      <text display="1">Supermarket Manager Simulator Empire</text>
+      <pronunciation>s uw p er m aa r k ih t ___ m ae n ax jh er ___ s ih m y ax l ey t er ___ eh m p ay er</pronunciation>
+    </speechRecognitionWords>
+  </language>
+</gamePackage>
