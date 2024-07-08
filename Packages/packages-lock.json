@@ -52,12 +52,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.nptoolkit2.ps4": {
-      "version": "file:E:/PS Files/PlayStation_DATA/PlayStation_Developer_Data/com.unity.nptoolkit2.ps4-1.0.2.tgz",
-      "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {}
-    },
     "com.unity.recorder": {
       "version": "4.0.3",
       "depth": 0,
@@ -88,7 +82,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.7.6",
+      "version": "1.7.5",
       "depth": 1,
       "source": "registry",
       "dependencies": {

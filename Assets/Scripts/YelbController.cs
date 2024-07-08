@@ -140,27 +140,6 @@ public class YelbController : MonoBehaviour
 		
 		CashValue.text = YelbBackend.GetValueFromFloat(YelbRef.CashValue).ToString("F2") + "$";
 
-
-        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 2000)
-		{
-			TrophyManager.Instance.UnlockTrophy(0);
-		}
-        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 3000)
-        {
-            TrophyManager.Instance.UnlockTrophy(1);
-        }
-        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 4000)
-        {
-            TrophyManager.Instance.UnlockTrophy(2);
-        }
-        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 5000)
-        {
-            TrophyManager.Instance.UnlockTrophy(3);
-        }
-        if (YelbBackend.GetValueFromFloat(YelbRef.CashValue) >= 6000)
-        {
-            TrophyManager.Instance.UnlockTrophy(4);
-        }
     }
 
 	private void Init()
@@ -177,10 +156,10 @@ public class YelbController : MonoBehaviour
 		{
 			UIController.PanelComputer.SetActive(value: false);
 		});
-		LinkerController.SettingBtn.onClick.AddListener(delegate
+		/*LinkerController.SettingBtn.onClick.AddListener(delegate
 		{
 			UIController.PanelSettings.SetActive(value: true);
-		});
+		});*/
 		LinkerController.TutorialBtn.onClick.AddListener(delegate
 		{
 			UIController.SetTutorialFirstTime(Mode: false);
