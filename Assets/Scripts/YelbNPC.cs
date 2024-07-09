@@ -168,7 +168,6 @@ public class YelbNPC : MonoBehaviour
 							ManagerNPC.TotalItems--;
 							UnityEngine.Object.Destroy(base.gameObject);
 						}
-						Debug.Log("Go out store");
 					}
 				}
 				if (ItsTooLong)
@@ -478,7 +477,6 @@ public class YelbNPC : MonoBehaviour
 					YelbBackend.StartAnimation(Anim, "Speed", 0f, AnimationMode.setfloat);
 					break;
 				default: 
-					Debug.Log("no aniation");
 					break;
 			}
 		}

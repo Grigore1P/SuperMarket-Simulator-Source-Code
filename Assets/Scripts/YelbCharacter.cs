@@ -29,7 +29,7 @@ public class YelbCharacter : MonoBehaviour
 	public float SpeedMovement = 8f;
 
 	public float SenstiveCamX = 6f;
-
+	
 	public float SenstiveCamY = 6f;
 
 	public float Distance = 6f;
@@ -168,7 +168,8 @@ public class YelbCharacter : MonoBehaviour
 						btnInteract.onClick.AddListener(delegate
 						{
 							_003CManagerLogic_003Eg__TakeAction_007C28_2();
-						});
+                            _YelbController.LinkerController.BtnInteract.onClick.RemoveAllListeners();
+                        });
 						_YelbController.LinkerController.BtnInteract.interactable = true;
 						_YelbController.LinkerController.BtnInteract.gameObject.SetActive(value: true);
 					}
@@ -382,16 +383,20 @@ public class YelbCharacter : MonoBehaviour
 				
 
                 bool flag = false;
+				int slotId = 0;
 				for (int j = 0; j < component.Shelf.SlotsMenu.Length; j++)
 				{
 					if (component.Shelf.SlotsMenu[j].childCount > 0)
 					{
 						flag = true;
-					}
+						slotId = j;
+						break;
+                    }
 				}
 				if (flag)
 				{
-					ItemInfo itemInfo = Shelf.SlotsMenu[0].transform.GetChild(0).GetComponent<ItemInfo>();
+					
+					ItemInfo itemInfo = Shelf.SlotsMenu[slotId].transform.GetChild(0).GetComponent<ItemInfo>();
 
                     _YelbController.LinkerController.MoveBtn.gameObject.SetActive(value: false);
 					if (!_YelbController.LinkerController.ChangePriceBtn.gameObject.activeSelf)
@@ -548,7 +553,8 @@ public class YelbCharacter : MonoBehaviour
 						{
 							//_003C_003Ec__DisplayClass28_6 @object;
 							//_YelbController.LinkerController.BtnInteract.onClick.AddListener(@object._003CManagerLogic_003Eg__SetDoor_007C22);
-							_YelbController.LinkerController.BtnInteract.onClick.AddListener(() =>
+							_YelbController.LinkerController.BtnInteract.onClick.RemoveAllListeners();
+                            _YelbController.LinkerController.BtnInteract.onClick.AddListener(() =>
 							{
 								if (door.opened)
 								{

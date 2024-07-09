@@ -73,7 +73,6 @@ public class CashRegister : MonoBehaviour
 
 	public void ManagerLogic()
 	{
-		Debug.Log("Manager Logic");
 		if (TotalClients > 0 && UsingCharacter == null)
 		{
 			for (int num = Clients.Count - 1; num >= 0; num--)
@@ -83,7 +82,6 @@ public class CashRegister : MonoBehaviour
 					Clients.RemoveAt(num);
 				}
 			}
-			Debug.Log("Set up : " + Clients[0]);
 			UsingCharacter = Clients[0];
 		}
 		if (UsingCharacter != null)
@@ -92,7 +90,6 @@ public class CashRegister : MonoBehaviour
 			if (component != null && component.IsArrivedCashier)
 			{
 				StartCoroutine(StartManagementClient(component));
-				Debug.Log("Busy with : " + component);
 				IsBussy = true;
 			}
 		}
