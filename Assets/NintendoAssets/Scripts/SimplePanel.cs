@@ -66,7 +66,8 @@ public class SimplePanel : MonoBehaviour
         {
             if (lastSelected)
             {
-                EventSystem.current.SetSelectedGameObject(lastSelected);
+                if (EventSystem.current)
+                    EventSystem.current.SetSelectedGameObject(lastSelected);
             }
             else
             {

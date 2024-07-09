@@ -75,7 +75,7 @@
         _BumpMap ("Bump Map", 2D) = "bump" {}
 
         [Space(25)]
-        _OutlineColor("Outline Color", Color) = (0.85023, 0.85034, 0.85045, 0.85056)
+        _OutlineColor("Outline Color", Color) = (0.7023, 0.75034, 0.75045, 0.75056)
         _OutlineWidth("Outline Width", Float) = 0.01
         _OutlineDepthOffset("Outline Depth Offset", Range(0, 1)) = 0.0
 

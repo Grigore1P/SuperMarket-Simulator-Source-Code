@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NintendoSdkMeta>
+  <Core>
+    <Name>Application</Name>
+    <Is64BitInstruction>True</Is64BitInstruction>
+    <ApplicationId>0x01004b9000490741</ApplicationId>
+    <ProgramIndex>0</ProgramIndex>
+    <MainThreadStackSize>0x00100000</MainThreadStackSize>
+    <ProcessAddressSpace>AddressSpace64Bit</ProcessAddressSpace>
+    <SystemResourceSize>0x01000000</SystemResourceSize>
+  </Core>
+  <Application>
+    <Title>
+      <Language>AmericanEnglish</Language>
+      <Name>Supermarket Manager Simulator Empire 2024</Name>
+      <Publisher>CHETRUSCA SOFTWORKS S.R.L</Publisher>
+    </Title>
+    <Icon>
+      <Language>AmericanEnglish</Language>
+      <IconPath>C:\Nintendo\UnityNintendoSDK\NintendoSDK\Resources\SpecFiles\NintendoSDK_Application.bmp</IconPath>
+    </Icon>
+    <ReleaseVersion>1</ReleaseVersion>
+    <DisplayVersion>1</DisplayVersion>
+    <StartupUserAccount>Required</StartupUserAccount>
+    <UserAccountSwitchLock>Disable</UserAccountSwitchLock>
+    <SupportedLanguage>AmericanEnglish</SupportedLanguage>
+    <Screenshot>Allow</Screenshot>
+    <DataLossConfirmation>None</DataLossConfirmation>
+    <UserAccountSaveDataSize>0x0000000001400000</UserAccountSaveDataSize>
+    <UserAccountSaveDataJournalSize>0x0000000002800000</UserAccountSaveDataJournalSize>
+    <LogoType>LicensedByNintendo</LogoType>
+    <LogoHandling>Auto</LogoHandling>
+    <Rating>
+      <Organization>ESRB</Organization>
+      <Age>0</Age>
+    </Rating>
+    <VideoCapture>Enable</VideoCapture>
+    <RuntimeAddOnContentInstall>Deny</RuntimeAddOnContentInstall>
+    <CrashReport>Allow</CrashReport>
+    <CrashScreenshotForProd>Allow</CrashScreenshotForProd>
+    <CrashScreenshotForDev>Deny</CrashScreenshotForDev>
+    <PlayLogQueryCapability>None</PlayLogQueryCapability>
+    <PlayLogPolicy>Open</PlayLogPolicy>
+  </Application>
+</NintendoSdkMeta>

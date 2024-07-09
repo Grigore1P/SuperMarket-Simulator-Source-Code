@@ -26,7 +26,7 @@ public class CarMovement : MonoBehaviour
     {
         bool wasMoving = move;
 
-        if (Physics.Raycast(RayOrigin.position, transform.forward, out RaycastHit hit, 6f, playerLayer))
+        if (Physics.Raycast(RayOrigin.position, RayOrigin.forward, out RaycastHit hit, 6f, playerLayer))
         {
             if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Car"))
             {
@@ -41,9 +41,9 @@ public class CarMovement : MonoBehaviour
                 move = true;
             }
         }
-        else if (Physics.Raycast(RayOrigin1.position, transform.forward, out RaycastHit hit1, 6f, playerLayer))
+        else if (Physics.Raycast(RayOrigin1.position, RayOrigin1.forward, out RaycastHit hit1, 2.5f, playerLayer))
         {
-            if (hit1.collider.CompareTag("Player"))
+            if (hit1.collider.CompareTag("Player") || hit1.collider.CompareTag("Car"))
             {
                 move = false;
                 if (wasMoving && hit1.collider.CompareTag("Player"))
@@ -56,9 +56,9 @@ public class CarMovement : MonoBehaviour
                 move = true;
             }
         }
-        else if (Physics.Raycast(RayOrigin2.position, transform.forward, out RaycastHit hit2, 6f, playerLayer))
+        else if (Physics.Raycast(RayOrigin2.position, RayOrigin2.forward, out RaycastHit hit2, 2.5f, playerLayer))
         {
-            if (hit2.collider.CompareTag("Player"))
+            if (hit2.collider.CompareTag("Player") || hit2.collider.CompareTag("Car"))
             {
                 move = false;
                 if (wasMoving && hit2.collider.CompareTag("Player"))
@@ -78,6 +78,7 @@ public class CarMovement : MonoBehaviour
         }
         MoveAndRotate();
     }
+
 
     private void MoveAndRotate()
     {
@@ -115,6 +116,8 @@ public class CarMovement : MonoBehaviour
     {
         // Draw the raycast line in the editor for debugging
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(RayOrigin.position, transform.forward * 3f);
+        Gizmos.DrawRay(RayOrigin.position, RayOrigin.forward * 3f);
+        Gizmos.DrawRay(RayOrigin1.position, RayOrigin1.forward * 2.5f);
+        Gizmos.DrawRay(RayOrigin2.position, RayOrigin2.forward * 2.5f);
     }
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pluginVersion: 30
   nintendoSdkVersion:
-    version1: 0
-    version2: 0
+    version1: 16
+    version2: 2
     version3: 0
