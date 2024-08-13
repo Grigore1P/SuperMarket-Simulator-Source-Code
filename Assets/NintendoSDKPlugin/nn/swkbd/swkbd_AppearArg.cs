@@ -63,7 +63,13 @@ namespace nn.swkbd
         private byte _customizedDicCount;
         [MarshalAs(UnmanagedType.U1)]
         public bool isCancelButtonDisabled;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 14)]
+
+        [MarshalAs(UnmanagedType.U1)]
+        public bool isGb180302022Lv1Enabled;
+        private IntPtr _textCheckWithUserDataCallback;
+        private IntPtr _textCheckCallbackUserData;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         private byte[] _reserved;
     }
 

@@ -808,6 +808,8 @@ public class YelbCharacter : MonoBehaviour
                     SaveBridge.SetFloatPP("CashValue", SaveBridge.GetFloatPP("CashValue", 150) + float.Parse(price));
                     SaveBridge.SetFloatPP(YelbRef.LevelPickedValue, YelbBackend.GetValueFromFloat(YelbRef.LevelPickedValue) + 10f);
                     _YelbController.LevelInformations();
+                    ArrowGlow.gameObject.SetActive(value: false);
+					PlayGlow.gameObject.SetActive(false);
                     EventSystem.current.SetSelectedGameObject(null);
 
                 }

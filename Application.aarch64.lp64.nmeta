@@ -3,7 +3,7 @@
   <Core>
     <Name>Application</Name>
     <Is64BitInstruction>True</Is64BitInstruction>
-    <ApplicationId>0x01004b9000490741</ApplicationId>
+    <ApplicationId>0x0100adb020386000</ApplicationId>
     <ProgramIndex>0</ProgramIndex>
     <MainThreadStackSize>0x00100000</MainThreadStackSize>
     <ProcessAddressSpace>AddressSpace64Bit</ProcessAddressSpace>
@@ -17,10 +17,10 @@
     </Title>
     <Icon>
       <Language>AmericanEnglish</Language>
-      <IconPath>C:\Nintendo\UnityNintendoSDK\NintendoSDK\Resources\SpecFiles\NintendoSDK_Application.bmp</IconPath>
+      <IconPath>Supermarket_Logo_BMP.bmp</IconPath>
     </Icon>
-    <ReleaseVersion>1</ReleaseVersion>
-    <DisplayVersion>1</DisplayVersion>
+    <ReleaseVersion>0</ReleaseVersion>
+    <DisplayVersion>1.0</DisplayVersion>
     <StartupUserAccount>Required</StartupUserAccount>
     <UserAccountSwitchLock>Disable</UserAccountSwitchLock>
     <SupportedLanguage>AmericanEnglish</SupportedLanguage>
@@ -31,9 +31,46 @@
     <LogoType>LicensedByNintendo</LogoType>
     <LogoHandling>Auto</LogoHandling>
     <Rating>
-      <Organization>ESRB</Organization>
+      <Organization>ACB</Organization>
       <Age>0</Age>
     </Rating>
+    <Rating>
+      <Organization>ClassInd</Organization>
+      <Age>0</Age>
+    </Rating>
+    <Rating>
+      <Organization>ESRB</Organization>
+      <Age>6</Age>
+    </Rating>
+    <Rating>
+      <Organization>GRACGCRB</Organization>
+      <Age>0</Age>
+    </Rating>
+    <Rating>
+      <Organization>IARCGeneric</Organization>
+      <Age>3</Age>
+    </Rating>
+    <Rating>
+      <Organization>OFLC</Organization>
+      <Age>0</Age>
+    </Rating>
+    <Rating>
+      <Organization>PEGI</Organization>
+      <Age>3</Age>
+    </Rating>
+    <Rating>
+      <Organization>PEGIBBFC</Organization>
+      <Age>3</Age>
+    </Rating>
+    <Rating>
+      <Organization>PEGIPortugal</Organization>
+      <Age>3</Age>
+    </Rating>
+    <Rating>
+      <Organization>USK</Organization>
+      <Age>0</Age>
+    </Rating>
+    <LegalInformationFilePath>legal_info_0100adb020386000_3422.zip</LegalInformationFilePath>
     <VideoCapture>Enable</VideoCapture>
     <RuntimeAddOnContentInstall>Deny</RuntimeAddOnContentInstall>
     <CrashReport>Allow</CrashReport>

@@ -145,6 +145,10 @@ namespace nn.swkbd
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate TextCheckResult TextCheckCallback(IntPtr pOutDialogTextBuf, ref long pOutDialogTextLengthSize, ref nn.swkbd.String pStr);
 
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate TextCheckResult TextCheckWithUserDataCallback(IntPtr pOutDialogTextBuf, ref long pOutDialogTextLengthSize,
+        ref nn.swkbd.String pStr, IntPtr pUserData);
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct UserWord
     {

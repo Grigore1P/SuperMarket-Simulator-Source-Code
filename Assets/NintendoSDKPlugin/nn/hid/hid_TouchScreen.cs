@@ -2573,6 +2573,11 @@ namespace nn.hid
 
         [DllImport(Nn.DllName,
             CallingConvention = CallingConvention.Cdecl,
+            EntryPoint = "nn_hid_InitializeTouchScreenWithResolution")]
+        public static extern void Initialize(int width, int height);
+
+        [DllImport(Nn.DllName,
+            CallingConvention = CallingConvention.Cdecl,
             EntryPoint = "nn_hid_GetTouchScreenState1")]
         public static extern void GetState(ref TouchScreenState1 pOutValue);
 

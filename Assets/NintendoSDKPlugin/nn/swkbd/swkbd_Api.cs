@@ -11,6 +11,7 @@
  *--------------------------------------------------------------------------------*/
 
 #if UNITY_SWITCH || UNITY_EDITOR || NN_PLUGIN_ENABLE 
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -41,7 +42,9 @@ namespace nn.swkbd
         public static void SetInitialText(ref ShowKeyboardArg pOutShowKeyboardArg, string pStr) { }
         public static void SetInitialTextUtf8(ref ShowKeyboardArg pOutShowKeyboardArg, byte[] pStr) { }
         public static void SetUserWordList(ref ShowKeyboardArg pOutShowKeyboardArg, UserWord[] pUserWord, int userWordNum) { }
+        [ObsoleteAttribute("This method is obsolete. Call SetTextCheckCallback(ref ShowKeyboardArg, TextCheckWithUserDataCallback, IntPtr) instead.", false)]
         public static void SetTextCheckCallback(ref ShowKeyboardArg pOutShowKeyboardArg, TextCheckCallback pCallback) { }
+        public static void SetTextCheckCallback(ref ShowKeyboardArg pOutShowKeyboardArg, TextCheckWithUserDataCallback pCallback, IntPtr pUserData) { }
         public static void SetCustomizedDictionaries(ref ShowKeyboardArg pOutShowKeyboardArg, CustomizedDictionarySet dicSet) { }
         public static void Initialize(ref ShowKeyboardArg pOutShowKeyboardArg) { }
         public static void Initialize(ref ShowKeyboardArg pOutShowKeyboardArg, bool useDirectory) { }
@@ -165,10 +168,15 @@ namespace nn.swkbd
             CallingConvention = CallingConvention.Cdecl,
             EntryPoint = "nn_swkbd_SetUserWordList")]
         public static extern void SetUserWordList(ref ShowKeyboardArg pOutShowKeyboardArg, [In] UserWord[] pUserWord, int userWordNum);
+        [ObsoleteAttribute("This method is obsolete. Call SetTextCheckCallback(ref ShowKeyboardArg, TextCheckWithUserDataCallback, IntPtr) instead.", false)]
+        [DllImport(Nn.DllName,
+            CallingConvention = CallingConvention.Cdecl,
+            EntryPoint = "nn_swkbd_SetTextCheckCallback_deprecated")]
+        public static extern void SetTextCheckCallback(ref ShowKeyboardArg pOutShowKeyboardArg, [In] TextCheckCallback pCallback);
         [DllImport(Nn.DllName,
             CallingConvention = CallingConvention.Cdecl,
             EntryPoint = "nn_swkbd_SetTextCheckCallback")]
-        public static extern void SetTextCheckCallback(ref ShowKeyboardArg pOutShowKeyboardArg, [In] TextCheckCallback pCallback);
+        public static extern void SetTextCheckCallback(ref ShowKeyboardArg pOutShowKeyboardArg, [In] TextCheckWithUserDataCallback pCallback, IntPtr pUserData);
         [DllImport(Nn.DllName,
             CallingConvention = CallingConvention.Cdecl,
             EntryPoint = "nn_swkbd_SetCustomizedDictionaries")]
