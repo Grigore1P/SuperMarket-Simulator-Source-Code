@@ -98037,7 +98037,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1791407413008444617}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999995
+  m_Size: 0.9999996
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -98379,8 +98379,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1791407411162951438}
   m_HandleRect: {fileID: 1791407413008444568}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.5935136
+  m_Value: 0.99999976
+  m_Size: 0.5935134
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -111187,18 +111187,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1791407409267116296}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1791407411162951825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113139,7 +113127,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1791407413008444848}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9997806
+  m_Size: 0.99962646
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -154004,7 +153992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000179942, y: 0.0007941009}
+  m_AnchoredPosition: {x: 0.000179942, y: 0.0014540307}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &1791407413008444780
