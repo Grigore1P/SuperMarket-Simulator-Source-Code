@@ -358,7 +358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1791407413008438527
 RectTransform:
   m_ObjectHideFlags: 0
@@ -796,6 +796,7 @@ MonoBehaviour:
   Prices:
   - {fileID: 1791407411162944937}
   - {fileID: 1791407411162944863}
+  TotalItems: 0
 --- !u!1 &1791407409267116526
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1791407413008438494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -990,7 +991,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4087
+    m_Bits: 0
 --- !u!1 &1791407409267116592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1791407413008438561
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2342,6 +2343,7 @@ MonoBehaviour:
   Prices:
   - {fileID: 1791407411162944833}
   - {fileID: 1791407411162944888}
+  TotalItems: 0
 --- !u!1 &1791407409267116778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2975,7 +2977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1791407413008438555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3058,7 +3060,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4087
+    m_Bits: 0
 --- !u!1 &1791407409267116899
 GameObject:
   m_ObjectHideFlags: 0
